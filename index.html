@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AR con Video - Debug</title>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.2/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.1.7/dist/aframe/mindar-aframe.prod.js"></script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100%;
+        background: #000;
+      }
+      mindar-ar {
+        width: 100vw;
+        height: 100vh;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <mindar-ar
+      embedded
+      image-target-src="targets/target.mind"
+      auto-start="true"
+      ui-loading="yes"
+      ui-scanning="yes"
+      ui-error="yes"
+    >
+      <a-assets>
+        <video
+          id="video-perro"
+          src="video.mp4"
+          autoplay
+          loop
+          muted
+          playsinline
+          crossorigin="anonymous"
+        ></video>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled"></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-video
+          src="#video-perro"
+          width="1"
+          height="0.5625"
+          position="0 0 0"
+          rotation="0 0 0"
+        ></a-video>
+      </a-entity>
+    </mindar-ar>
+  </body>
+</html>
